@@ -1,7 +1,9 @@
 import { combineReducers } from "redux";
-import { movieReducer } from './movieReducers';
+import { moviesReducer } from './moviesReducers';
+import { movieSingleReducer } from "./movieSingleReducers";
 
 // Using combine reducers to break up reducers into different files
 export default combineReducers({
-  movieReducer,
+  moviesReducer,
+  movieSingleReducer
 });

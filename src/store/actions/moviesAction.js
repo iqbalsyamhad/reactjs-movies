@@ -1,22 +1,27 @@
 import { movieAPIS, configAPI } from "../../utils/omdb";
 
-export const MOVIE_PENDING = "MOVIE_PENDING";
-export const MOVIE_FAILED = "MOVIE_FAILED";
-export const MOVIE_SUCCESS = "MOVIE_SUCCESS";
+export const MOVIES_PENDING = "MOVIES_PENDING";
+export const MOVIES_FAILED = "MOVIES_FAILED";
+export const MOVIES_SUCCESS = "MOVIES_SUCCESS";
+export const MOVIES_UPDATE = "MOVIES_UPDATE";
 
-export const getMovie = () => async (dispatch) => {
+export const getMovie = (query, page) => async (dispatch) => {
     try {
-        dispatch({ type: MOVIE_PENDING });
+        dispatch({ type: MOVIES_PENDING });
 
-        const getMovieResponse = await movieAPIS.get('', { params: { s: "Batman", page: 2, ...configAPI } });
+        let isEnddata = true
+        const type = page === 1 ? MOVIES_SUCCESS : MOVIES_UPDATE
+        const getMovieResponse = await movieAPIS.get('', { params: { s: query, page: page, ...configAPI } });
         // console.log("API result: " + JSON.stringify(getMovieResponse))
 
-        const movies = [...getMovieResponse.data.Search];
+        if (getMovieResponse.data.totalResults > 0) isEnddata = false
+        const movies = [...getMovieResponse.data.Search || []];
 
         dispatch({
-            type: MOVIE_SUCCESS,
+            type: type,
             payload: {
-                movies
+                movies,
+                isEnddata
             },
         });
     } catch (e) {
@@ -24,7 +29,7 @@ export const getMovie = () => async (dispatch) => {
         console.log(e.response);
 
         dispatch({
-            type: MOVIE_FAILED,
+            type: MOVIES_FAILED,
             payload: e.response,
         });
     }
