@@ -20,8 +20,8 @@ const MovieSingle = props => {
     return (
         <Wrapper>
             <Container>
-                {loading && <Text>Loading...</Text>}
-                {!loading && error && <Text>{error || 'No data!'}</Text>}
+                {loading && <h3 style={{ color: 'green' }}>Loading...</h3>}
+                {!loading && error && <h3 style={{ color: 'red' }}>{error || 'No data!'}</h3>}
                 {movie &&
                     <>
                         <h1 style={{ color: 'black', alignSelf: 'center' }}>{movie.Title}</h1>

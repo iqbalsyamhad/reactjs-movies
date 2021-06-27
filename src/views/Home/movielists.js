@@ -36,8 +36,8 @@ export const Movielists = props => {
                         </Flex>
                     </Card>
                 )}
-                {loading && <Text>Loading...</Text>}
-                {!loading && movies.length === 0 && <Text>{error?.data?.Error || 'No data!'}</Text>}
+                {loading && <h3 style={{ bottom: 10, color: "green" }}>Loading...</h3>}
+                {!loading && movies.length === 0 && <h3 style={{ color: 'red' }}>{error?.data?.Error || 'No data!'}</h3>}
             </Flex>
             <Modal
                 isOpen={open}>
