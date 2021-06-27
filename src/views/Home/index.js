@@ -5,7 +5,7 @@ import { getMovie } from "../../store/actions/moviesAction";
 import { Movielists } from "./movielists";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function Dashboard() {
+export default function Home() {
   const dispatch = useDispatch();
 
   const [query, setQuery] = React.useState("Batman");
