@@ -8,6 +8,7 @@ import { AppWrapper } from "bushido-strap";
 
 // Importing all routes
 import Home from "./views/Home";
+import MovieSingle from "./views/Movie/moviesingle";
 
 // Using Web Font Loader for google fonts
 import WebFont from "webfontloader";
@@ -27,6 +28,7 @@ export default function App() {
   return (
     <AppWrapper head_font={h_font} font={r_font}>
       <Route path="/" exact component={Home} />
+      <Route path="/movie/:id" component={MovieSingle} />
     </AppWrapper>
   );
 }
