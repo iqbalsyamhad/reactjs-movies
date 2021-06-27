@@ -11,7 +11,7 @@ reactjs-movies showing movies from [omdbapi](http://www.omdbapi.com/) with some 
 
 ## Built with
 
-This project build with reactJS ([Create React App](https://github.com/facebook/create-react-app)) and [bushido](https://github.com/JimmyMcBride/cra-template-bushido) template which includes:
+This project built with reactJS ([Create React App](https://github.com/facebook/create-react-app)) and [bushido](https://github.com/JimmyMcBride/cra-template-bushido) template which includes:
 
 * axios
 * bushido-strap
